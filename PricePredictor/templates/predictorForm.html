@@ -1,0 +1,78 @@
+{% extends 'base_layout.html' %}
+{% block userContent %}
+
+<div class="d-flex justify-content-center">
+    <h3>Form Page: Car Price Predictor Website</h3>
+</div><br>
+<br><br>
+<div class="d-flex justify-content-center w-10">
+    <form action="/dashboard/" method="POST">
+        {% csrf_token %}
+
+        <div class="d-flex justify-content-between">
+            <label for="brand" class="form-label ml-1">Brand: </label>
+            <select name="brand" id="brand">
+                {% for key, values in brand.items %}
+                    <option value="{{key}}">{{values}}</option>
+                {% endfor %}
+            </select>
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="model" class="form-label">Model: </label>
+            <select name="model" id="model">
+                {% for key, values in model.items %}
+                    <option value="{{key}}">{{values}}</option>
+                {% endfor %}
+            </select>    
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="fuel" class="form-label">Fuel Type: </label>
+            <select name="fuel" id="fuel">
+                {% for key, values in fuel.items %}
+                    <option value="{{key}}">{{values}}</option>
+                {% endfor %}
+            </select>
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="transmission" class="form-label">Transmission: </label>
+            <select name="transmission" id="transmission">
+                {% for key, values in transmission.items %}
+                    <option value="{{key}}">{{values}}</option>
+                {% endfor %}
+            </select>
+        </div><br>
+
+        <div class="d-flex justify-content-between">
+            <label for="manfactureYear" class="form-label">Manfactured Year: </label>
+            <input id="manfactureYear" name="manfactureYear" type="number" min="1900" max="2025" step="1" value="2016" />
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="engineSize" class="form-label">Engine Size: </label>
+            <input id="engineSize" name="engineSize" type="number" min="1.0" max="20" step="0.1" value="1.5" />
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="mileage" class="form-label">Mileage: </label>
+            <input id="mileage" name="mileage" type="number" min="0" max="1000000" step="1" value="1000" />
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+         {% comment %} class="mb-3"> {% endcomment %}
+            <label for="doors" class="form-label">Doors: </label>
+            <input id="doors" name="doors" type="number" min="1" max="12" step="1" value="4" />
+        </div><br>
+        
+        <div class="d-flex justify-content-between">
+            <label for="ownerCount" class="form-label">Owner Count: </label>
+            <input id="ownerCount" name="ownerCount" type="number" min="1" max="50" step="1" value="1" />
+        </div><br>
+    <div class="d-flex justify-content-center w-10">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+</div><br>
+{% endblock %}
